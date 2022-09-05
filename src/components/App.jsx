@@ -1,53 +1,38 @@
-import { nanoid } from 'nanoid';
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
+// import { addContact, removeContact, setFilter } from '../redux/toolkit/actions';
+
+import { addContact, removeContact, setFilter } from '../redux/actions';
+import { getFilteredContacts, getFilter } from '../redux/selectors';
+
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    const value = JSON.parse(localStorage.getItem('contacts'));
-    return value || [];
-  });
-  const [filter, setFilter] = useState('');
+  // const contacts = useSelector(store => store.contacts);
+  const contacts = useSelector(getFilteredContacts);
+  const filter = useSelector(getFilter);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  const dispatch = useDispatch();
 
-  const formSubmitHeandler = ({ name, number }) => {
-    const notUniqeContact = contacts.find(contact => contact.name === name);
-    if (notUniqeContact) {
-      return alert(`${name} is already in contacts`);
-    }
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-    setContacts([newContact, ...contacts]);
+  const onAddContact = data => {
+    dispatch(addContact(data));
   };
 
-  const changeFilter = event => {
-    const { value } = event.currentTarget;
-    setFilter(value);
+  const onRemoveContact = id => {
+    dispatch(removeContact(id));
   };
 
-  const deleteContact = contactId => {
-    setContacts(contacts.filter(contact => contact.id !== contactId));
+  const handleFilter = ({ target }) => {
+    dispatch(setFilter(target.value));
   };
-
-  const normalizedFilter = filter.toLowerCase();
-  const filtredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
 
   return (
     <>
-      <ContactForm onSubmit={formSubmitHeandler} />
+      <ContactForm onSubmit={onAddContact} />
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={changeFilter} />
-      <ContactList contacts={filtredContacts} onDelete={deleteContact} />
+      <Filter value={filter} onChange={handleFilter} />
+      <ContactList contacts={contacts} onDelete={onRemoveContact} />
     </>
   );
 };
