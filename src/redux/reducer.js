@@ -5,9 +5,20 @@ const initialStore = {
   filter: '',
 };
 
+const isDublicate = (name, contacts) => {
+  const result = contacts.find(
+    item => name.toLowerCase() === item.name.toLowerCase()
+  );
+  return Boolean(result);
+};
+
 const reducer = (store = initialStore, { type, payload }) => {
   switch (type) {
     case ADD_CONTACT:
+      if (isDublicate(payload.name, store.contacts)) {
+        alert(`${payload.name} is already in contacts`);
+        return store;
+      }
       const newContacts = [...store.contacts, payload];
       return { ...store, contacts: newContacts };
     case REMOVE_CONTACT:

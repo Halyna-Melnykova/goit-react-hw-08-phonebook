@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+// import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contacts/items/items-actions';
 import s from './ContactForm.module.css';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const [state, setState] = useState({
     name: '',
     number: '',
   });
   const { name, number } = state;
+
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -16,7 +20,7 @@ const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(state);
+    dispatch(addContact(state));
     reset();
   };
 
@@ -61,11 +65,3 @@ const ContactForm = ({ onSubmit }) => {
 };
 
 export default ContactForm;
-
-ContactForm.propTypes = {
-  formSubmitHeandler: PropTypes.func,
-};
-
-ContactForm.defaultProps = {
-  onSubmit: () => {},
-};
