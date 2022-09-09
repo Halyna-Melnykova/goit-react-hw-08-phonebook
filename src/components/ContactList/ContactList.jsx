@@ -24,6 +24,7 @@ const ContactList = () => {
   };
   return (
     <ul className={s.contactList}>
+      {loading && <p>Loading...</p>}
       {error && <p>Error</p>}
       {!loading &&
         contacts.length > 0 &&
