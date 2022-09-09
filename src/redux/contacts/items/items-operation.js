@@ -24,10 +24,8 @@ export const fetchContacts = createAsyncThunk(
 export const addContact = createAsyncThunk(
   'сontacts/add',
   async (data, { rejectWithValue }) => {
-    console.log(data);
     try {
       const result = await api.addContact(data);
-      console.log(result);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -35,8 +33,10 @@ export const addContact = createAsyncThunk(
   },
   {
     condition: (data, { getState }) => {
-      const { сontacts } = getState();
-      if (isDublicate(data, сontacts.items)) {
+      const { contacts } = getState();
+      // console.log(getState());
+
+      if (isDublicate(data, contacts.items.items)) {
         alert(`${data.name} is already in contacts`);
         return false;
       }

@@ -17,16 +17,12 @@ const ContactForm = () => {
     setState({ ...state, [name]: value });
   };
 
-  // const onAddContact = data => {
-  //   const action = addContact(data);
-  //   dispatch(action);
-  // };
-
   const handleSubmit = event => {
     event.preventDefault();
+
     dispatch(addContact(state));
     console.log(state);
-    // onAddContact();
+
     reset();
   };
 
