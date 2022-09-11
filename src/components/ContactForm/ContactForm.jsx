@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contacts/items/items-operation';
+import { addContact } from 'redux/items/items-operation';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -19,10 +19,7 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
     dispatch(addContact(state));
-    // console.log(state);
-
     reset();
   };
 

@@ -11,10 +11,6 @@ const Navigation = lazy(() => import('./Navigation/Navigatoin'));
 // const ContactList = lazy(() => import('./ContactList/ContactList'));
 // const Filter = lazy(() => import('./Filter/Filter'));
 
-// import ContactForm from './ContactForm/ContactForm';
-// import ContactList from './ContactList/ContactList';
-// import Filter from './Filter/Filter';
-
 const App = () => {
   return (
     <div className="container">
@@ -29,15 +25,6 @@ const App = () => {
       </Suspense>
     </div>
   );
-
-  // return (
-  //   <>
-  //     <ContactForm />
-  //     <h2>Contacts</h2>
-  //     <Filter />
-  //     <ContactList />
-  //   </>
-  // );
 };
 
 export default App;

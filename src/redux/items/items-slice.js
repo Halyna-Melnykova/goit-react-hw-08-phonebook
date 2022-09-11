@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchContacts,
-  addContact,
-  removeContact,
-} from '../items/items-operation';
+import { fetchContacts, addContact, removeContact } from './items-operation';
 
 const initialState = {
   items: [],
@@ -12,7 +8,7 @@ const initialState = {
 };
 
 const itemsSlice = createSlice({
-  name: 'items',
+  name: 'contacts',
   initialState,
   extraReducers: {
     [fetchContacts.pending]: store => {

@@ -1,13 +1,13 @@
-export const getState = ({ contacts }) => ({
-  loading: contacts.loading,
-  error: contacts.error,
+export const getState = state => ({
+  loading: state.loading,
+  error: state.error,
 });
 
-export const getFilteredContacts = ({ contacts }) => {
+export const getFilteredContacts = state => {
   const {
     items: { items },
     filter,
-  } = contacts;
+  } = state;
   if (!filter) {
     return items;
   }

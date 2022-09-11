@@ -1,17 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  fetchContacts,
-  removeContact,
-} from 'redux/contacts/items/items-operation';
-import {
-  getFilteredContacts,
-  getState,
-} from 'redux/contacts/items/items-selectors';
+import { fetchContacts, removeContact } from 'redux/items/items-operation';
+import { getFilteredContacts, getState } from 'redux/items/items-selectors';
 import s from './ContactList.module.css';
 
 const ContactList = () => {
-  const contacts = useSelector(getFilteredContacts);
+  const items = useSelector(getFilteredContacts);
   const { loading, error } = useSelector(getState);
   const dispatch = useDispatch();
 
@@ -27,8 +21,8 @@ const ContactList = () => {
       {loading && <p>Loading...</p>}
       {error && <p>Error</p>}
       {!loading &&
-        contacts.length > 0 &&
-        contacts.map(({ id, name, phone }) => (
+        items.length > 0 &&
+        items.map(({ id, name, phone }) => (
           <li key={id} className={s.contactItem}>
             <p>
               {name}: {phone}

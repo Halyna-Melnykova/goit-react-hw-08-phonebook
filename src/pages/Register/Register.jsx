@@ -1,7 +1,11 @@
-// import { Link } from 'react-router-dom';
+import RegisterForm from 'components/RegisterForm/RegisterForm';
 
 const Register = () => {
-  return <p>register</p>;
+  return (
+    <main>
+      <RegisterForm />
+    </main>
+  );
 };
 
 export default Register;
