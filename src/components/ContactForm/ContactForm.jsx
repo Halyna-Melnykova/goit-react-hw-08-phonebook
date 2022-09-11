@@ -21,7 +21,7 @@ const ContactForm = () => {
     event.preventDefault();
 
     dispatch(addContact(state));
-    console.log(state);
+    // console.log(state);
 
     reset();
   };
