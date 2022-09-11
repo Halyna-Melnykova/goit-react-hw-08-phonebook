@@ -1,0 +1,16 @@
+.nav {
+  box-shadow: 0 4px 2px -2px gray;
+  margin-bottom: 10px;
+}
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+}
+.active {
+  composes: link;
+  color: red;
+}
