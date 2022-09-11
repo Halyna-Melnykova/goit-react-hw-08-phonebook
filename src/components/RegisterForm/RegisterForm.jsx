@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signup } from 'redux/auth/auth-operations';
+import s from './RegisterForm.module.css';
 
 const RegisterForm = () => {
   const [state, setState] = useState({
@@ -8,6 +11,11 @@ const RegisterForm = () => {
   });
   const { name, email, password } = state;
 
+  const dispatch = useDispatch();
+  // const onSignup = data => {
+  //   dispatch(signup(data));
+  // };
+
   const handleChange = event => {
     const { name, value } = event.currentTarget;
     setState({ ...state, [name]: value });
@@ -15,7 +23,7 @@ const RegisterForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setState(state);
+    dispatch(signup(state));
     reset();
   };
 
@@ -24,11 +32,12 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
+    <form className={s.form} onSubmit={handleSubmit}>
+      <div className={s.wrapper}>
+        <label className={s.label}>
           Name:
           <input
+            className={s.input}
             name="name"
             value={name}
             onChange={handleChange}
@@ -36,9 +45,10 @@ const RegisterForm = () => {
             required
           ></input>
         </label>
-        <label>
+        <label className={s.label}>
           Email:
           <input
+            className={s.input}
             name="email"
             value={email}
             onChange={handleChange}
@@ -47,9 +57,10 @@ const RegisterForm = () => {
             required
           ></input>
         </label>
-        <label>
+        <label className={s.label}>
           Password:
           <input
+            className={s.input}
             name="password"
             value={password}
             onChange={handleChange}
@@ -58,8 +69,8 @@ const RegisterForm = () => {
             required
           ></input>
         </label>
+        <button className={s.formBtn}>Register</button>
       </div>
-      <button>Register</button>
     </form>
   );
 };
