@@ -36,3 +36,24 @@ export const logout = createAsyncThunk(
     }
   }
 );
+
+export const getCurrent = createAsyncThunk(
+  'auth/current',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const result = await api.getCurrent(auth.token);
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { auth } = getState();
+      if (!auth.token) {
+        return false;
+      }
+    },
+  }
+);

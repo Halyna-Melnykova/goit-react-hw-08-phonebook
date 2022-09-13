@@ -1,5 +1,7 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCurrent } from 'redux/auth/auth-operations';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -11,6 +13,13 @@ const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 const Header = lazy(() => import('./Header/Header'));
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrent());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="container">
       <Header />
