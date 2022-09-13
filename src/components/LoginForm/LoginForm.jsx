@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { isLogin } from '../../redux/auth/auth-selectors';
 import { login } from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
 
@@ -9,6 +10,7 @@ const LoginForm = () => {
     password: '',
   });
   const { email, password } = state;
+  const isAuth = useSelector(isLogin);
   const dispatch = useDispatch();
 
   const handleChange = event => {
@@ -53,7 +55,7 @@ const LoginForm = () => {
             required
           ></input>
         </label>
-        <button className={s.formBtn}>Register</button>
+        <button className={s.formBtn}>Login</button>
       </div>
     </form>
   );

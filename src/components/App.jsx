@@ -5,7 +5,9 @@ const Register = lazy(() => import('../pages/Register/Register'));
 const Login = lazy(() => import('../pages/Login/Login'));
 const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 
-const Navigation = lazy(() => import('./Navigation/Navigatoin'));
+const Header = lazy(() => import('./Header/Header'));
+
+// const Navigation = lazy(() => import('./Navigation/Navigation'));
 // const UserMenu = lazy(() => import('./UserMenu/UserMenu'));
 // const ContactForm = lazy(() => import('./ContactForm/ContactForm'));
 // const ContactList = lazy(() => import('./ContactList/ContactList'));
@@ -14,7 +16,7 @@ const Navigation = lazy(() => import('./Navigation/Navigatoin'));
 const App = () => {
   return (
     <div className="container">
-      <Navigation />
+      <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/register" element={<Register />} />
