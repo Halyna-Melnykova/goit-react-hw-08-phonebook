@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import { instance } from './auth';
+import instance from './auth';
 
 // const instance = axios.create({
 //   baseURL: 'https://connections-api.herokuapp.com/contacts',
@@ -7,6 +7,7 @@ import { instance } from './auth';
 
 export const getContacts = async () => {
   const { data } = await instance.get('/contacts');
+  console.log(data);
   return data;
 };
 

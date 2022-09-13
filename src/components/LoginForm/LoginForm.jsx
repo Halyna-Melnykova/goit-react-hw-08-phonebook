@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { isLogin } from '../../redux/auth/auth-selectors';
 import { login } from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
@@ -27,6 +28,10 @@ const LoginForm = () => {
   const reset = () => {
     setState({ email: '', password: '' });
   };
+
+  if (isAuth) {
+    return <Navigate to="/contacts" />;
+  }
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>

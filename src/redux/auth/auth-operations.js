@@ -24,3 +24,15 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const result = await api.logout();
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

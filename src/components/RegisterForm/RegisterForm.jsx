@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import { isLogin } from '../../redux/auth/auth-selectors';
 import { signup } from 'redux/auth/auth-operations';
 import s from './RegisterForm.module.css';
 
@@ -10,11 +12,8 @@ const RegisterForm = () => {
     password: '',
   });
   const { name, email, password } = state;
-
+  const isAuth = useSelector(isLogin);
   const dispatch = useDispatch();
-  // const onSignup = data => {
-  //   dispatch(signup(data));
-  // };
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -30,6 +29,10 @@ const RegisterForm = () => {
   const reset = () => {
     setState({ name: '', email: '', password: '' });
   };
+
+  if (isAuth) {
+    return <Navigate to="/contacts" />;
+  }
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
