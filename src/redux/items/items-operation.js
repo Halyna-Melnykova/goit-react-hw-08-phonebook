@@ -35,7 +35,6 @@ export const addContact = createAsyncThunk(
   {
     condition: (data, { getState }) => {
       const { items } = getState();
-      console.log(getState());
 
       if (isDublicate(data, items.items)) {
         alert(`${data.name} is already in contacts`);

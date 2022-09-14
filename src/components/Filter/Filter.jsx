@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
-import s from './Filter.module.css';
+
+import Form from 'react-bootstrap/Form';
+// import s from './Filter.module.css';
 
 const Filter = () => {
   const filter = useSelector(getFilter);
@@ -11,19 +13,16 @@ const Filter = () => {
     dispatch(setFilter(target.value));
   };
   return (
-    <label className={s.label}>
-      Find contacts by name
-      <input
-        className={s.input}
+    <Form.Floating className="mb-3">
+      <Form.Control
+        id="floatingInputCustom"
         type="text"
         name="filter"
         value={filter}
         onChange={handleFilter}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
       />
-    </label>
+      <label htmlFor="floatingInputCustom">Find contacts by name</label>
+    </Form.Floating>
   );
 };
 

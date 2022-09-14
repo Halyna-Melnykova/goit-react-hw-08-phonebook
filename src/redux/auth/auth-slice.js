@@ -15,7 +15,6 @@ const authSlise = createSlice({
   extraReducers: {
     [signup.pending]: store => ({ ...store, loading: true, error: null }),
     [signup.fulfilled]: (store, { payload }) => {
-      console.log(payload);
       store.loading = false;
       store.user = payload.user;
       store.token = payload.token;

@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts, removeContact } from 'redux/items/items-operation';
 import { getFilteredContacts, getState } from 'redux/items/items-selectors';
+
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 import s from './ContactList.module.css';
 
 const ContactList = () => {
@@ -17,22 +20,34 @@ const ContactList = () => {
     dispatch(removeContact(id));
   };
   return (
-    <ul className={s.contactList}>
+    <ListGroup variant="flush">
       {loading && <p>Loading...</p>}
       {error && <p>Error</p>}
       {!loading &&
         items.length > 0 &&
         items.map(({ id, name, number }) => (
-          <li key={id} className={s.contactItem}>
+          <ListGroup.Item key={id} variant="primary" className={s.item}>
             <p>
               {name}: {number}
             </p>
-            <button className={s.button} onClick={() => onDeleteContact(id)}>
+            <Button
+              variant="outline-primary"
+              type="submit"
+              onClick={() => onDeleteContact(id)}
+            >
               Delete
-            </button>
-          </li>
+            </Button>
+          </ListGroup.Item>
+          // <li key={id} className={s.contactItem}>
+          //   <p>
+          //     {name}: {number}
+          //   </p>
+          //   <button className={s.button} onClick={() => onDeleteContact(id)}>
+          //     Delete
+          //   </button>
+          // </li>
         ))}
-    </ul>
+    </ListGroup>
   );
 };
 

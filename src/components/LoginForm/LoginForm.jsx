@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { isLogin } from '../../redux/auth/auth-selectors';
 import { login } from 'redux/auth/auth-operations';
-import s from './LoginForm.module.css';
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+// import s from './LoginForm.module.css';
 
 const LoginForm = () => {
   const [state, setState] = useState({
@@ -34,35 +37,37 @@ const LoginForm = () => {
   }
 
   return (
-    <form className={s.form} onSubmit={handleSubmit}>
-      <div className={s.wrapper}>
-        <label className={s.label}>
-          Email:
-          <input
-            className={s.input}
-            name="email"
-            value={email}
-            onChange={handleChange}
-            placeholder="Enter email"
-            type="email"
-            required
-          ></input>
-        </label>
-        <label className={s.label}>
-          Password:
-          <input
-            className={s.input}
-            name="password"
-            value={password}
-            onChange={handleChange}
-            placeholder="Enter password"
-            type="password"
-            required
-          ></input>
-        </label>
-        <button className={s.formBtn}>Login</button>
-      </div>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control
+          name="email"
+          value={email}
+          onChange={handleChange}
+          type="email"
+          placeholder="Enter email"
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          name="password"
+          value={password}
+          onChange={handleChange}
+          type="password"
+          placeholder="Password"
+          aria-describedby="passwordHelpBlock"
+        />
+        <Form.Text id="passwordHelpBlock" muted>
+          Your password must be 8-20 characters long, contain letters and
+          numbers, and must not contain spaces, special characters, or emoji.
+        </Form.Text>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Login
+      </Button>
+    </Form>
   );
 };
 
