@@ -9,7 +9,7 @@ const Header = () => {
   const isAuth = useSelector(isLogin);
   return (
     <header className={s.header}>
-      <Navigation isLogin={isAuth} />
+      <Navigation isLogin={true} />
       {isAuth ? <UserMenu /> : <HeaderAuth />}
     </header>
   );

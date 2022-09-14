@@ -47,7 +47,7 @@ const authSlise = createSlice({
     [getCurrent.pending]: store => ({ ...store, loading: true, error: null }),
     [getCurrent.fulfilled]: (store, { payload }) => {
       store.loading = false;
-      store.user = payload.user;
+      store.user = payload;
       store.token = payload.token;
       store.isLogin = true;
     },

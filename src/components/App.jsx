@@ -5,12 +5,12 @@ import { getCurrent } from 'redux/auth/auth-operations';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
+import Header from './Header/Header';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Register = lazy(() => import('../pages/Register/Register'));
 const Login = lazy(() => import('../pages/Login/Login'));
 const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
-const Header = lazy(() => import('./Header/Header'));
 
 const App = () => {
   const dispatch = useDispatch();
