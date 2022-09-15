@@ -12,9 +12,9 @@ const setToken = (token = '') => {
 };
 
 export const signup = async data => {
-  // console.log(data);
   const { data: result } = await instance.post('/users/signup', data);
   // instance.defaults.headers.authorization = `Bearer ${result.token}`;
+  // instance.defaults.headers.common.authorization - Репета
   setToken(result.token);
   return result;
 };

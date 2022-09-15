@@ -1,3 +1,4 @@
+import { GiRotaryPhone } from 'react-icons/gi';
 import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
 import HeaderAuth from 'components/HeaderAuth/HeaderAuth';
@@ -9,6 +10,7 @@ const Header = () => {
   const isAuth = useSelector(isLogin);
   return (
     <header className={s.header}>
+      <GiRotaryPhone />
       <Navigation isLogin={true} />
       {isAuth ? <UserMenu /> : <HeaderAuth />}
     </header>

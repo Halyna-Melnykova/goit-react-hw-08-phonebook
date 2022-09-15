@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCurrent } from 'redux/auth/auth-operations';
+import Container from 'react-bootstrap/Container';
 
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -21,22 +22,24 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container">
-      <Header />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route element={<PrivateRoute />}>
-            <Route path="contacts" element={<Contacts />} />
-          </Route>
-          <Route element={<PublicRoute />}>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-          </Route>
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </Suspense>
-    </div>
+    <>
+      <Container>
+        <Header />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="contacts" element={<Contacts />} />
+            </Route>
+            <Route element={<PublicRoute />}>
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+            </Route>
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
+      </Container>
+    </>
   );
 };
 
