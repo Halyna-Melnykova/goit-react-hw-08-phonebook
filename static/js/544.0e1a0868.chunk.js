@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[544],{9544:function(e,t,r){r.r(t);var n=r(3329);t.default=function(){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)("h1",{children:"Home Page"}),(0,n.jsx)("p",{children:" Please login or register to view contacts:)"})]})}}}]);
+//# sourceMappingURL=544.0e1a0868.chunk.js.map
