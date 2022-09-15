@@ -1,10 +1,10 @@
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts, removeContact } from 'redux/items/items-operation';
 import { getFilteredContacts, getState } from 'redux/items/items-selectors';
-
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
 import s from './ContactList.module.css';
 
 const ContactList = () => {

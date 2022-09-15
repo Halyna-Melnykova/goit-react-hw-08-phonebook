@@ -1,8 +1,8 @@
+import Form from 'react-bootstrap/Form';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
-
-import Form from 'react-bootstrap/Form';
 // import s from './Filter.module.css';
 
 const Filter = () => {

@@ -7,7 +7,6 @@ const PublicRoute = () => {
   if (isAuth) {
     return <Navigate to="/contacts" />;
   }
-
   return <Outlet />;
 };
 

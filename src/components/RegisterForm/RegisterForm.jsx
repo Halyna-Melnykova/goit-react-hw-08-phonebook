@@ -1,11 +1,11 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { isLogin } from '../../redux/auth/auth-selectors';
 import { signup } from 'redux/auth/auth-operations';
-
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 // import s from './RegisterForm.module.css';
 
 const RegisterForm = () => {

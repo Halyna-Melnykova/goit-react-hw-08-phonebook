@@ -1,9 +1,9 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/items/items-operation';
-
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 // import s from './ContactForm.module.css';
 
 const ContactForm = () => {

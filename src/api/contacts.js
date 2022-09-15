@@ -1,9 +1,5 @@
-// import axios from 'axios';
+// import axios from 'axios'; не потрібен (токен записаний в instance)
 import instance from './auth';
-
-// const instance = axios.create({
-//   baseURL: 'https://connections-api.herokuapp.com/contacts',
-// });
 
 export const getContacts = async () => {
   const { data } = await instance.get('/contacts');
