@@ -2,9 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import { isLogin } from '../../redux/auth/auth-selectors';
+import {
+  useDispatch,
+  //  useSelector
+} from 'react-redux';
+// import { Navigate } from 'react-router-dom';
+// import { isLogin } from '../../redux/auth/auth-selectors';
 import { signup } from 'redux/auth/auth-operations';
 // import s from './RegisterForm.module.css';
 
@@ -15,7 +18,7 @@ const RegisterForm = () => {
     password: '',
   });
   const { name, email, password } = state;
-  const isAuth = useSelector(isLogin);
+  // const isAuth = useSelector(isLogin);
   const dispatch = useDispatch();
 
   const handleChange = event => {
@@ -33,9 +36,9 @@ const RegisterForm = () => {
     setState({ name: '', email: '', password: '' });
   };
 
-  if (isAuth) {
-    return <Navigate to="/contacts" />;
-  }
+  // if (isAuth) {
+  //   return <Navigate to="/contacts" />;
+  // }
 
   return (
     <Form onSubmit={handleSubmit}>

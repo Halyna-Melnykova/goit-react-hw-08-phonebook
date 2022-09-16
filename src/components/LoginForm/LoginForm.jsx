@@ -2,10 +2,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import { isLogin } from '../../redux/auth/auth-selectors';
+import {
+  useDispatch,
+  //  useSelector
+} from 'react-redux';
 import { login } from 'redux/auth/auth-operations';
+// не потрібно бо є приватні роути
+// import { Navigate } from 'react-router-dom';
+// import { isLogin } from '../../redux/auth/auth-selectors';
+
 // import s from './LoginForm.module.css';
 
 const LoginForm = () => {
@@ -14,7 +19,7 @@ const LoginForm = () => {
     password: '',
   });
   const { email, password } = state;
-  const isAuth = useSelector(isLogin);
+  // const isAuth = useSelector(isLogin);
   const dispatch = useDispatch();
 
   const handleChange = event => {
@@ -32,9 +37,9 @@ const LoginForm = () => {
     setState({ email: '', password: '' });
   };
 
-  if (isAuth) {
-    return <Navigate to="/contacts" />;
-  }
+  // if (isAuth) {
+  //   return <Navigate to="/contacts" />;
+  // }
 
   return (
     <Form onSubmit={handleSubmit}>

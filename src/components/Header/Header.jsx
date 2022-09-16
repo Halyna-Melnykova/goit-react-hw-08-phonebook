@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className={s.header}>
       <GiRotaryPhone />
-      <Navigation isLogin={true} />
+      <Navigation isLogin={isAuth} />
       {isAuth ? <UserMenu /> : <HeaderAuth />}
     </header>
   );
